@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>button</title>
+  <style>
+    html{
+      font-size: calc(0.5em + 0.5vw)
+    }
+    body{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* 全局按钮样式 */
+    button:focus{      /* 点击之后其实发生了focus */
+      outline: none;
+    }
+
+    button{
+
+      position: relative;
+      /* 层叠上下文环境 模板二需要 */
+      z-index: 0; 
+      /* 层叠上下文环境 */
+      padding: 0.5rem;
+      border: none;
+      border-radius: 0.25rem;
+      letter-spacing: 0.5px;
+      text-transform: capitalize;
+      font-size: 1rem;
+    }
+
+    button:hover{
+      cursor: pointer;
+    }
+    /* 全局按钮样式 */
+
+
+
+                          /* button hover+translate 按钮模板一 */
+    /* button{
+      color: rgb(255, 255, 137);
+      background-color: black;
+      transition: all 0.25s;
+      box-shadow: 2px 2px 5px -2px ;
+    }
+
+    button:hover{
+      background-color: rgb(255, 255, 137);
+      color: black;
+      animation: btn-anim 位移动画 0.25s ease-in-out 1 alternate;
+      animation: btn-scale-anim 弹簧动画  0.25s ease-in-out 1 alternate;
+    }
+
+    @keyframes btn-scale-anim { 
+      33.3%{
+        transform: scale(0.9,1.1)
+      }
+      66.7%{
+        transform: scale(1.1,0.9)
+      }
+    }
+    
+    @keyframes btn-anim {
+      from{
+        transform: translate(0rem,0);
+      }
+      20%{
+        transform: translate(0.25rem,0);
+      }
+      80%{
+        transform: translate(-0.25rem,0);
+      }
+      to{
+        transform: translate(0rem,0);
+      }
+    }
+
+    button::after{
+      display: block;
+      content: "";
+      border-radius: 50%;
+      background-color: azure;
+    } */
+                          /* button hover+translate 按钮模板一 */
+
+
+
+
+
+
+
+
+
+
+
+                        /* 闪光按钮 模板二 */
+    /* button{
+      overflow: hidden;
+    }
+
+    button::after{
+      display: block;
+      content: "";
+      position: absolute;
+      z-index: -1;
+      left: -25%;
+      top: -50%;
+      width: 25%;
+      height: 100%;
+      background-color: #f1ebeb;
+      transform: rotate(45deg) scale(1,15) ;
+    } 
+
+    button:hover::after{
+      transition: all 1s linear;
+      left: 100%;
+      top: 50%;
+    } */
+                        /* 闪光按钮 模板二 */
+
+
+
+
+
+
+                        /* 波纹效果 模板三 */
+    /* button{
+      overflow: hidden;
+      background-color: black;
+      color: white;
+    }
+
+    button::before,button::after{
+      display: block;
+      content: "";
+      position: absolute;
+      z-index: -1;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      margin:auto;
+      width: 2rem;
+      height: 2rem;
+      color: white;
+      border-radius: 50%;
+      border-width: 0.2rem ;
+      border-style: dotted;
+      opacity: 1;
+      transform: scale(0)
+    }
+
+    button:hover::before{
+      animation: btn-ripple-anmi 1.5s ease-in infinite ;
+    }
+    button:hover::after{
+      animation: btn-ripple-anmi 1.5s ease-in 0.5s infinite ;
+    }
+
+    @keyframes btn-ripple-anmi {
+      50%{
+        opacity: 1;
+      }
+      to{
+        border-width: 0.05rem ;
+        transform: scale(3);
+        opacity: 0;
+      }
+    } */
+    /* button:hover::after,button:hover::before{
+      transform: scale(0);
+      background-color: brown;
+      transform: scale(4);
+    } */
+                        /* 波纹效果 模板三 */
+
+  </style>
+</head>
+<body>
+  <button onclick="this.style.outLine='none'">submit</button>
+</body>
+</html>

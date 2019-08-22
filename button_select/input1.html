@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>button</title>
+  <style>
+    html{
+      font-size: calc(0.5em + 0.5vw)
+    }
+    body{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* 全局按钮样式 */
+    input{
+      outline: none;
+      border: none;
+      height: 2.5rem;
+      line-height: 2.5rem;
+      text-indent: 1rem;
+      min-width: 15rem;
+      background-color: transparent;
+    }
+    label{
+      display: block;
+      position: relative;
+      z-index: 0;
+      cursor: pointer;
+    }
+    /* 全局按钮样式 */
+
+
+    /* svg线条边框动画 */
+    svg{
+      position: absolute;
+      z-index: -2;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .user-name-att{
+      /* 标签动画 */
+      position: absolute;
+      z-index: -1;
+      left: 0;
+      top: 0;
+      line-height: 2.5rem;
+      height: 2.5rem;
+      margin-left:1rem;
+      transition: all 0.25s;
+    }
+
+    path{
+      /* 路径动画 */
+      transition: stroke-dasharray 0.5s;
+      stroke-dasharray: 600 800;
+    }
+
+    label:hover path{
+      stroke-dasharray: 600 0;
+    }
+
+    label:hover .user-name-att{
+      transform: translate(0,-100%);
+      margin-left: 0;
+      text-transform: capitalize;
+      color: rgb(6, 211, 184);
+    }
+
+    .user-name-path-anim{
+      stroke-dasharray: 600 0;
+    }
+
+    .user-name-att-anim{
+      transform: translate(0,-100%);
+      margin-left: 0;
+      text-transform: capitalize;
+      color: rgb(6, 211, 184);
+    }
+    /* svg线条边框动画*/
+
+  </style>
+</head>
+<body>
+  <label for="" id="user-name-label">
+    <input type="text" id="user-name"><span id="user-name-att" class="user-name-att">name</span>
+    <svg version="1.1"   viewBox="0 0 600 100 "  preserveAspectRatio="none" fill="black">
+      <path id="user-name-path" fill="none" stroke="rgb(6, 211, 184)" stroke-width="8" d="M 0 100,L 600 100 ,L 600 0,L 0 0 ,L 0 100 "></path>
+    </svg>
+  </label>
+  <script>
+    var nameLabel =  document.getElementById('user-name-label')//label
+    var nameInput = document.getElementById('user-name')       //input
+    var namePath =  document.getElementById('user-name-path')  //path
+    var nameAtt =   document.getElementById('user-name-att')  //Att
+
+    nameLabel.addEventListener('mouseleave',userNameValueHas)
+    nameInput.addEventListener('change',userNameValueHas)
+    // 同时监听鼠标移动和input框的改变
+    function userNameValueHas()
+    {
+      if(nameInput.value)
+      {
+        namePath.classList.add('user-name-path-anim')
+        nameAtt.classList.add('user-name-att-anim')
+        console.log('mouseleave but not')
+      }else{
+        namePath.classList.remove('user-name-path-anim')
+        nameAtt.classList.remove('user-name-att-anim')
+        console.log('mouseleave')
+      }
+    }
+    console.log(nameInput)
+  </script>
+</body>
+</html>

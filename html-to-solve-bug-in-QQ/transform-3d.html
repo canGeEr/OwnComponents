@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>This is the lastest time to solve</title>
+  <style>
+    #transform-view-btn{
+      position:absolute;
+      right:0;
+      top:0;
+    }
+    body{
+      display:flex;
+      height:100vh;
+      justify-content:center;
+      align-items:center;
+      margin:0;
+      padding:0;
+    }
+    .stage{
+      position:relative;
+      height:200px;
+      width:200px;
+      transform-style:preserve-3d;
+    }
+    .three-box{
+      position:absolute;
+      left:0;
+      right:0;
+      width:100%;
+      height:100%;
+      background-color:antiquewhite;
+      backface-visibility:hidden;
+      transition:all 0.5s;
+    }
+    .box1{
+      transform:rotateY(0deg) translateZ(100px) ;
+    }
+    .box2{
+      transform:rotateY(90deg) translateZ(100px) ;
+    }
+    .box3{
+      transform:rotateY(180deg) translateZ(100px) ;
+    }
+    .box4{
+      transform:rotateY(270deg) translateZ(100px) ;
+    }
+  </style>
+</head>
+<body>
+  <button id="transform-view-btn"><span>deg:</span><span id="deg-show"></span></button>
+  <div class="stage-auditorium">
+    <div class="stage">
+      <div class="three-box box1" style="background-color: red"></div>
+      <div class="three-box box2" style="background-color:royalblue;"></div>
+      <div class="three-box box3" style="background-color: yellow"></div>
+      <div class="three-box box4" style="background-color: green"></div>
+    </div>
+  </div>
+  <script>
+    var boxs = document.getElementsByClassName('three-box')
+    var btn = document.getElementById('transform-view-btn')
+    btn.addEventListener('click',rotate)
+    var deg = 90
+    function rotate()
+    {
+      deg += 90
+      for(let i=0;i<boxs.length;i++)
+      {
+        boxs[i].style.transform = 'rotateY(' + (deg + 90*(i-1)) + 'deg) translateZ(100px)'
+      }
+    }
+    for(let i=0;i<boxs.length;i++){
+      boxs[i].addEventListener('click',function(){alert(i)})
+    }
+  </script>
+</body>
+</html>
+<!-- 
+结语关于这个demo:
+一:
+原因:QQ浏览器对于transform-3d类，在旋转到侧面时无法点击到：几天还无法解决的问题
+解决：我想就是不去旋转整体而是对当个元素，继续旋转，虽然更好性能，但是这样每次翻转之后，你要看到的第一页是真的在正面
+-->
+
+ <!-- 
+二:
+transform 可以配合transform-origin使用，做成一个正方体,
+并控制最外成的盒子旋转
+  -->
